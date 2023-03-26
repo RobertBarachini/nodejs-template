@@ -1,0 +1,22 @@
+version: '3.8'
+
+# NOTE: Run command:
+# docker compose -f 'docker-compose.yml' up --build --force-recreate --remove-orphans
+# Compose down:
+# docker compose -f 'docker-compose.yml' down --remove-orphans --volumes --rmi all
+
+services:
+  nodejstemplate:
+    image: nodejstemplate-prod
+    container_name: nodejstemplate-prod
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: production
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./logs:/usr/src/app/logs

@@ -1,0 +1,13 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"editor.formatOnPaste": false,
+	"thunder-client.saveToWorkspace": true,
+	"thunder-client.workspaceRelativePath": "tests",
+	"thunder-client.sidebar.showActivityFromCollection": true,
+	"thunder-client.saveRequestOnSend": false,
+	"thunder-client.certificates": [],
+}

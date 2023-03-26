@@ -1,0 +1,36 @@
+{
+	"configurations": [
+		{
+			"name": "Attach to Docker port",
+			"type": "node",
+			"request": "attach",
+			"port": 9229,
+			"address": "localhost",
+			"localRoot": "${workspaceFolder}",
+			"remoteRoot": "/usr/src/app",
+			"restart": true,
+			"sourceMaps": true,
+			"skipFiles": [
+				"<node_internals>/**"
+			]
+		},
+		{
+			"name": "Attach to native dev port",
+			"type": "node",
+			"request": "attach",
+			"port": 9229,
+			"address": "localhost",
+			"localRoot": "${workspaceFolder}",
+			"skipFiles": [
+				"<node_internals>/**"
+			]
+		},
+		{
+			"name": "Docker Node.js Launch",
+			"type": "docker",
+			"request": "launch",
+			"preLaunchTask": "docker-run: debug",
+			"platform": "node"
+		}
+	]
+}

@@ -1,0 +1,54 @@
+{
+	"type": "module",
+	"name": "nodejs-template",
+	"version": "0.0.1",
+	"description": "A Node.js project template",
+	"main": "src/server/index.js",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"start": "NODE_ENV='production' node src/server/index.js",
+		"dev": "NODE_ENV='development' nodemon --inspect=0.0.0.0:9229 src/server/index.js",
+		"compose:down": "docker compose -f 'docker-compose.yml' -f 'docker-compose.debug.yml' down --remove-orphans --volumes --rmi all",
+		"compose:up": "docker compose -f 'docker-compose.yml' -f 'docker-compose.debug.yml' up --build --force-recreate --remove-orphans",
+		"compose:up:headless": "docker compose -f 'docker-compose.yml' -f 'docker-compose.debug.yml' up --build --force-recreate --remove-orphans -d",
+		"test": "npx mocha --recursive src/**/*.test.js",
+		"lint": "npx eslint src/**/*.js"
+	},
+	"keywords": [
+		"nodejs",
+		"template",
+		"express",
+		"ES6",
+		"docker",
+		"eslint",
+		"prettier",
+		"development",
+		"production",
+		"testing",
+		"debug",
+		"mocha"
+	],
+	"author": "Robert Barachini",
+	"license": "UNLICENSED",
+	"dependencies": {
+		"express": "^4.18.2",
+		"winston": "^3.8.2"
+	},
+	"devDependencies": {
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-mocha": "^10.1.0",
+		"eslint-plugin-node": "^11.1.0",
+		"mocha": "^10.2.0",
+		"nodemon": "^2.0.22"
+	},
+	"engines": {
+		"node": ">=18.15.0"
+	},
+	"imports": {
+		"#utils/*": "./src/utils/*"
+	}
+}

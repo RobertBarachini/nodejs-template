@@ -1,0 +1,19 @@
+version: '3.8'
+
+# NOTE: When running development, you must first specify the docker-compose.yml
+#       before the docker-compose.dev.yml, so it only overrides specific fields.
+
+services:
+  nodejstemplate:
+    image: nodejstemplate-dev
+    container_name: nodejstemplate-dev
+    build:
+      target: development
+    environment:
+      NODE_ENV: development
+    ports:
+      - 9229:9229
+    volumes:
+      - ./logs:/usr/src/app/logs
+      - ./src:/usr/src/app/src
+      - ./node_modules:/usr/src/app/node_modules
