@@ -4,6 +4,7 @@
 		"**/node_modules/**",
 		"*.test.js",
 		"**/tests/**",
-		"dist/**"
+		"dist/**",
+		"logs/"
 	]
 }
