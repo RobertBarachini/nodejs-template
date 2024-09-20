@@ -13,8 +13,16 @@ app.get('/hello', (req, res) => {
 	res.status(200).send('Hello World!')
 })
 
+// NOTE: Remove this route in production
 app.get('/env', (req, res) => {
+	if (process.env.NODE_ENV !== 'development') {
+		return res.status(404).send('Not Found')
+	}
 	res.status(200).send(process.env)
+})
+
+app.get('/health', (req, res) => {
+	res.status(200).send('OK')
 })
 
 app.listen(PORT, () => {
