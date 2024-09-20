@@ -58,7 +58,10 @@ FROM base AS app
 # Copy the application code
 COPY --chown=node:node ./src ./src
 
-# Ensure the node user owns the application code
+# Ensure logs directory exists
+RUN mkdir -p /usr/src/app/logs
+
+# Ensure the node user owns the application directory
 # RUN chown -R node:node /usr/src/app
 
 # Copy node_modules from build stage

@@ -11,7 +11,7 @@
 		"start": "NODE_ENV='production' node src/server/index.js",
 		"dev": "NODE_ENV='development' nodemon --inspect=0.0.0.0:9229 src/server/index.js",
 		"compose:down": "docker compose -f 'docker-compose.yml' -f 'docker-compose.debug.yml' down --remove-orphans --volumes --rmi all",
-		"compose:up": "docker compose -f 'docker-compose.yml' -f 'docker-compose.debug.yml' up --build --force-recreate --remove-orphans",
+		"compose:up": "mkdir -p logs && docker compose -f 'docker-compose.yml' -f 'docker-compose.debug.yml' up --build --force-recreate --remove-orphans",
 		"compose:up:headless": "docker compose -f 'docker-compose.yml' -f 'docker-compose.debug.yml' up --build --force-recreate --remove-orphans -d",
 		"test": "npx mocha --recursive src/**/*.test.js",
 		"lint": "npx eslint src/**/*.js"
