@@ -43,7 +43,7 @@
 		"eslint-plugin-mocha": "^10.1.0",
 		"eslint-plugin-node": "^11.1.0",
 		"mocha": "^10.2.0",
-		"nodemon": "^2.0.22"
+		"nodemon": "^3.1.7"
 	},
 	"engines": {
 		"node": ">=18.15.0"

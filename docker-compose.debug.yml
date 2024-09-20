@@ -1,5 +1,3 @@
-version: '3.8'
-
 # NOTE: When running development, you must first specify the docker-compose.yml
 #       before the docker-compose.dev.yml, so it only overrides specific fields.
 

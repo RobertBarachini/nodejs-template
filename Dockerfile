@@ -1,12 +1,12 @@
 ################################################################
 #
-#  Multi staged Dockerfile for Node.js
+#  Multi-staged Dockerfile for Node.js
 #
 #  Contains stages for development and production
 #
 #  Author: Robert Barachini
 #
-#  Last updated: 2023-03-26
+#  Last updated: 2024-09-20
 #
 ################################################################
 
@@ -14,76 +14,79 @@
 #  STAGE: 📦 Base image
 ################################################################
 
-# https://hub.docker.com/_/node/tags?name=18.15.0-slim
-# Current vulnerabilities: 0
-FROM node:18.15.0-slim as base
+# https://hub.docker.com/_/node/tags?name=22.9.0-slim
+# Current vulnerabilities: 0 0 0 23 0 ; Critical High Medium Low Unspecified
+FROM node:22.9.0-slim AS base
 
+# Set labels
 LABEL maintainer="Robert Barachini"
 
+# Set the working directory
 WORKDIR /usr/src/app
 
-# pnpm
+# Install pnpm globally (cache)
+RUN npm install -g pnpm
+
+# Copy package.json and lock file
 COPY ["package.json", "pnpm-lock.yaml", "./"]
-
-# If using npm, uncomment the following line
-# COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+# COPY ["package.json", "pnpm-lock.yaml", ".npmrc", "./"] # If using .npmrc for private packages
 
 ################################################################
-#  STAGE: 🏗️ Build production
+#  STAGE: 🏗️ Build - Install dependencies
 ################################################################
 
-FROM base as build-production
+FROM base AS build
 
-ENV NODE_ENV=production
+# Install dependencies based on environment
+RUN if [ "$NODE_ENV" = "development" ]; then \
+		pnpm install --frozen-lockfile; \
+	else \
+		pnpm install --frozen-lockfile --prod; \
+	fi
 
-RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile --prod
-# RUN pnpm cache clean --force
+################################################################
+#  STAGE: 🏗️ App - Copy application code and prepare for runtime
+################################################################
 
-# If you prefer npm
-# RUN npm ci
-# RUN npm cache clean --force
+FROM base AS app
 
+# NOTE: This ensures that only the needed files are copied to the final image
+#       without polluting (or possibly leaking) the final image with unnecessary layers.
+#       If you decide to modify the workflow, make sure to inspect the build context
+#       and the final image and its layers.
+
+# Copy the application code
 COPY --chown=node:node ./src ./src
 
-################################################################
-#  STAGE: 🏗️ Build development
-################################################################
+# Ensure the node user owns the application code
+# RUN chown -R node:node /usr/src/app
 
-FROM base as build-development
+# Copy node_modules from build stage
+COPY --from=build --chown=node:node /usr/src/app/node_modules ./node_modules
 
-ENV NODE_ENV=development
-
-RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile
-
-# If you prefer npm
-# RUN npm install
-# RUN npm install -g nodemon
-
-COPY --chown=node:node ./src ./src
+# Set user to node
+USER node
 
 ################################################################
 #  STAGE: ⚙️ Run development
 ################################################################
 
-FROM build-development as development
+FROM app AS development
 
+# Set environment to development
 ENV NODE_ENV=development
 
-USER node
-
-# CMD pnpm run dev
-CMD ls -la node_modules && pnpm run dev
+# Run package.json script
+CMD pnpm run dev
 
 ################################################################
 #  STAGE: ⚙️ Run production
 ################################################################
 
-FROM build-production as production
+FROM app AS production
 
+# Set environment to production
 ENV NODE_ENV=production
 
-USER node
-
+# Run server in production mode
 CMD ["node", "src/server/index.js"]

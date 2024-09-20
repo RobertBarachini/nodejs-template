@@ -3,3 +3,6 @@ node_modules
 
 # logs/ directory
 logs
+
+# Private folder (for notes and such)
+.private/

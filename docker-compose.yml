@@ -1,5 +1,3 @@
-version: '3.8'
-
 # NOTE: Run command:
 # docker compose -f 'docker-compose.yml' up --build --force-recreate --remove-orphans
 # Compose down:

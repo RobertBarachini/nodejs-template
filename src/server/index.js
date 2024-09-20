@@ -25,6 +25,12 @@ app.get('/health', (req, res) => {
 	res.status(200).send('OK')
 })
 
+app.get('/time', (req, res) => {
+	const date = new Date()
+	console.log(`GET /time: ${date}`)
+	res.status(200).send(date)
+})
+
 app.listen(PORT, () => {
 	log.info(`Server listening on port ${PORT}`)
 })
