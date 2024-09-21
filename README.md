@@ -4,7 +4,7 @@ This is a template for Node.js projects. It is meant to be used as a starting po
 
 You are free to do whatever you want with this template. If you find it useful, please consider starring ⭐ the repository or supporting it in some other way. Attribution is not required, but appreciated.
 
-Last update: Sun Mar 26 2023 22:47:27 GMT+0200 (Central European Summer Time)
+Last update: 2024-09-21T22:03:49.379Z
 
 # Template usage
 
@@ -162,10 +162,15 @@ Project has a defined local (scope: workspace) Thunder Client (VS Code extension
 
 # TODO
 
-- [x] Write a README.md
-- [ ] Extent the basic router
-- [ ] Extend README.md
-- [ ] Extend template
-- [ ] Add env management
-- [ ] Add secret management
-- [ ] Add remote logging
+- Extend the basic router
+- Extend README.md
+- Extend template
+- Add env management
+- Add secret management
+- Add remote logging
+
+# DONE
+
+- Write a README.md
+- Add Docker stuff
+- Add project setup script (for creating a new project from the template)

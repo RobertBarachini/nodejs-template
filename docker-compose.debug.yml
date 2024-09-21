@@ -2,9 +2,9 @@
 #       before the docker-compose.dev.yml, so it only overrides specific fields.
 
 services:
-  nodejstemplate:
-    image: nodejstemplate-dev
-    container_name: nodejstemplate-dev
+  nodejs-template:
+    image: nodejs-template-dev
+    container_name: nodejs-template-dev
     build:
       target: development
     environment:
