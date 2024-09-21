@@ -10,11 +10,9 @@ Last update: 2024-09-21T22:03:49.379Z
 
 Initial setup:
 
-1. Clone the repository
-2. Remove `.git` folder and initialize a new one with `git init -b main`
-3. Update `package.json` with your project details
-4. Rename default names in files / configs to suit your needs.
-5. Delete unused files / configs
+1. Clone this repository and change directory to the root of the project
+2. Run `./src/scripts/setup.sh` in the root of the project and follow the instructions
+3. Change directory to the newly created project or open it in your editor
 
 Have fun `:^)`!
 
