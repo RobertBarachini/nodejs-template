@@ -1,36 +1,21 @@
-// Create a simple express server
-
+// Packages
 import express from 'express'
 
+// Project imports
 import { logger } from '#utils/logger.js'
+import { default as router } from './routes/router.js'
 
 const app = express()
-const log = logger({ service: 'server', level: 'info' })
+const log = logger()
+const port = process.env.PORT ?? 3000
 
-const PORT = process.env.PORT ?? 3000
+// Middleware
+app.use(express.json())
 
-app.get('/hello', (req, res) => {
-	res.status(200).send('Hello World!')
-})
+// Routes
+app.use('/', router)
 
-// NOTE: Remove this route in production
-app.get('/env', (req, res) => {
-	if (process.env.NODE_ENV !== 'development') {
-		return res.status(404).send('Not Found')
-	}
-	res.status(200).send(process.env)
-})
-
-app.get('/health', (req, res) => {
-	res.status(200).send('OK')
-})
-
-app.get('/time', (req, res) => {
-	const date = new Date()
-	console.log(`GET /time: ${date}`)
-	res.status(200).send(date)
-})
-
-app.listen(PORT, () => {
-	log.info(`Server listening on port ${PORT}`)
+// Start server
+app.listen(port, () => {
+	log.info(`Server listening on port ${port}`)
 })

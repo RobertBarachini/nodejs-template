@@ -1,5 +1,10 @@
 import winston from 'winston'
 
+// Default options
+const defaultService = 'server'
+const defaultLevel = process.env.NODE_ENV === 'development' ? 'debug' : 'info'
+const defaultPath = 'logs'
+
 /**
  * Create a logger instance with winston
  *
@@ -25,13 +30,13 @@ const logger = (options) => {
 	let { service, level, path } = options
 	// Set the default options
 	if (!service) {
-		service = 'default'
+		service = defaultService
 	}
 	if (!level) {
-		level = 'info'
+		level = defaultLevel
 	}
 	if (!path) {
-		path = 'logs'
+		path = defaultPath
 	}
 	const filename = `${service}.log`
 	// Check if the level is valid
