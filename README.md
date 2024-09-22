@@ -4,7 +4,7 @@ This is a template for Node.js projects. It is meant to be used as a starting po
 
 You are free to do whatever you want with this template. If you find it useful, please consider starring ⭐ the repository or supporting it in some other way. Attribution is not required, but appreciated.
 
-Last update: 2024-09-21T22:03:49.379Z
+Last update: 2024-09-22T09:28:11.305Z
 
 # Template usage
 
@@ -130,10 +130,6 @@ TODO
 
 TODO
 
-## API testing (Thunder Client)
-
-Project has a defined local (scope: workspace) Thunder Client (VS Code extension) setup. The relevant files are located in `tests/thunder-tests`, however you should only edit them if you really understand them. This extension makes it easy to test your API without having to install any additional software (like Postman).
-
 # Project structure
 
 - `src/` - source code
@@ -143,7 +139,7 @@ Project has a defined local (scope: workspace) Thunder Client (VS Code extension
   - It is recommended to use ustils (especially makeRequest) as it provides a unified way of handling errors and responses. Suggested import: `import { makeRequest } from '#utils/requests.js'`. Project uses path aliases, so you can use `#utils/requests.js` instead of `../../utils/requests.js`. Try to avoid using child paths (`../..`) as it makes it harder to move files around.
 - `logs/` - logs (mapped using volumes if using Docker)
 
-# Keywords:
+# Keywords
 
 - nodejs
 - template
@@ -161,10 +157,8 @@ Project has a defined local (scope: workspace) Thunder Client (VS Code extension
 # TODO
 
 - Extend the basic router
-- Extend README.md
 - Extend template
-- Add env management
-- Add secret management
+- Add env/secrets management
 - Add remote logging
 
 # DONE
@@ -172,3 +166,4 @@ Project has a defined local (scope: workspace) Thunder Client (VS Code extension
 - Write a README.md
 - Add Docker stuff
 - Add project setup script (for creating a new project from the template)
+- Extend README.md
