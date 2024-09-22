@@ -159,7 +159,6 @@ TODO
 - Extend template
 - Add env/secrets management
 - Add remote logging
-- Add middleware for logging (request/response)
 
 # DONE
 
@@ -169,3 +168,4 @@ TODO
 - Extend README.md
 - Extend the basic router
 - Change logging to print to stdout differently (not JSON like to logfile/remote)
+- Add middleware for logging (request/response)
