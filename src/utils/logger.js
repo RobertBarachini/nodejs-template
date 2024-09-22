@@ -54,7 +54,15 @@ const logger = (options) => {
 		),
 		defaultMeta: { service, timestamp: new Date().toISOString() },
 		transports: [
-			new winston.transports.Console(),
+			new winston.transports.Console({
+				format: winston.format.combine(
+					winston.format.colorize(),
+					winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSS' }),
+					winston.format.printf((info) => {
+						return `${info.timestamp} [${info.level}]: ${info.message}`
+					})
+				),
+			}),
 			new winston.transports.File({ filename: `${path}/${filename}` }),
 			// TODO: Add a transport to send the logs to a remote server
 		],

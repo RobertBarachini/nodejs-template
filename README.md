@@ -156,10 +156,10 @@ TODO
 
 # TODO
 
-- Extend the basic router
 - Extend template
 - Add env/secrets management
 - Add remote logging
+- Add middleware for logging (request/response)
 
 # DONE
 
@@ -167,3 +167,5 @@ TODO
 - Add Docker stuff
 - Add project setup script (for creating a new project from the template)
 - Extend README.md
+- Extend the basic router
+- Change logging to print to stdout differently (not JSON like to logfile/remote)
