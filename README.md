@@ -159,6 +159,7 @@ TODO
 - Extend template
 - Add env/secrets management
 - Add remote logging
+- Use chalk to colorize console logs?
 
 # DONE
 
@@ -169,3 +170,4 @@ TODO
 - Extend the basic router
 - Change logging to print to stdout differently (not JSON like to logfile/remote)
 - Add middleware for logging (request/response)
+- Add signal handling
