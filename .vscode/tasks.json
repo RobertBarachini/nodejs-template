@@ -34,6 +34,25 @@
 			"node": {
 				"enableDebugging": true
 			}
+		},
+		{
+			"label": "versionlens pnpm install", // task label name
+			"command": "pnpm",
+			"type": "shell",
+			"args": [
+				"install"
+			],
+			"options": {
+				// sets the cwd to the current file dir
+				"cwd": "${fileDirname}"
+			},
+			// customizable settings
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"panel": "shared",
+				"clear": false,
+			},
 		}
 	]
 }
